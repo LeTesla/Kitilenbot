@@ -4,6 +4,7 @@ const bot = new Discord.Client();
 const config = require("./config.json")
 
 bot.on('ready', () => {
+  bot.user.setGame('c:help for commands');
   console.log(`Kitilen initilized.`);
 });
 
@@ -37,19 +38,20 @@ bot.on('message', msg => {
   }
 
   if (command === "say") {
-    msg.channel.sendMessage(args.join(" "));
+     msg.delete();
+     msg.channel.sendMessage(args.join(" "));
   }
 
   if (command === "ping") {
-    msg.channel.sendMessage('Pong!');
+    msg.channel.send("Pong!").then(m => m.edit(`Ping! Latency is ${m.createdTimestamp - msg.createdTimestamp}ms. API Latency is ${Math.round(bot.ping)}ms`) );
   }
 
   if (command === "pong") {
-    msg.channel.sendMessage("Ping!");
-  }
+     msg.channel.send("Ping!").then(m => m.edit(`Ping! Latency is ${m.createdTimestamp - msg.createdTimestamp}ms. API Latency is ${Math.round(bot.ping)}ms`) );
 
+  }
   if (command === "help") {
-    msg.channel.sendMessage("It seems you have requested help. Check your DMs.");
+    msg.channel.sendMessage(":calling: It seems you have requested help. Check your DMs.");
     msg.author.sendMessage("Thanks for using the help command, this command will help you know the current commands. c:ping and c:pong are commands used to check if the bot is online. c:say allows you to make the bot say whatever you want it to say. c:calculateadd is an adding calculator. c:8ball is a fun command where you can ask the magic 8 ball a question and it will reply. c:invite makes the bot DM you an invite link to invite the bot to your server. And c:objection, c:holdit and c:takethat are AA commands.")
   }
 
@@ -75,7 +77,7 @@ bot.on('message', msg => {
 
   if (command === "invite") {
     msg.reply("It seems you want to invite me to your server. Check your DMs. ")
-    msg.author.sendMessage("https://discordapp.com/oauth2/authorize?client_id=269968242984878081&scope=bot&permissions=2146958463")
+    msg.author.sendMessage("https://discordapp.com/oauth2/authorize?client_id=269968242984878081&scope=bot&permissions=305212430")
   }
 
   if (command === "cointoss") {
