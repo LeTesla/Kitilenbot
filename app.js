@@ -9,14 +9,13 @@ bot.on('ready', () => {
 });
 
 function doMagic8BallVoodoo() {
-    var rand = ['Absolutly.', 'Absolutly not.', 'It is true.', 'Impossible.', 'Of course.', 'I do not think so.', 'It is true.', 'It is not true.', 'I am very undoubtful of that.', 'I am very doubtful of that.', 'Sources point to no.', 'Theories prove it.', 'Reply hazy try again', 'Ask again later', 'Better not tell you now', 'Cannot predict now', 'Concentrate and ask again'];
+    var rand = [':8ball: Absolutly.', ':8ball: Absolutly not.', ':8ball: It is true.', ':8ball: Impossible.', ':8ball: Of course.', ':8ball: I do not think so.', ':8ball: It is true.', ':8ball: It is not true.', ':8ball: I am very undoubtful of that.', ':8ball: I am very doubtful of that.', ':8ball: Sources point to no.', ':8ball: Theories prove it.', ':8ball: Reply hazy try again', ':8ball: Ask again later', ':8ball: Better not tell you now', ':8ball: Cannot predict now', ':8ball: Concentrate and ask again'];
 
     return rand[Math.floor(Math.random()*rand.length)];
 }
 
 function coinToss() {
     var rand = ['You flipped the coin, it lands on tails.', 'I flipped the coin, it lands on tails.', 'You flipped the coin, it lands on heads.', 'I flipped the coin, it lands on heads.'];
-
     return rand[Math.floor(Math.random()*rand.length)];
 }
 
@@ -43,11 +42,11 @@ bot.on('message', msg => {
   }
 
   if (command === "ping") {
-    msg.channel.send("Pong!").then(m => m.edit(`Ping! Latency is ${m.createdTimestamp - msg.createdTimestamp}ms. API Latency is ${Math.round(bot.ping)}ms`) );
+    msg.channel.send("Pong! (hold on, processing latency...)").then(m => m.edit(`Pong! (Current latency is ${m.createdTimestamp - msg.createdTimestamp}ms, while the API Latency is ${Math.round(bot.ping)}ms)`) );
   }
 
   if (command === "pong") {
-     msg.channel.send("Ping!").then(m => m.edit(`Ping! Latency is ${m.createdTimestamp - msg.createdTimestamp}ms. API Latency is ${Math.round(bot.ping)}ms`) );
+     msg.channel.send("Ping! (hold on, processing latency...)").then(m => m.edit(`Ping! (Current latency is ${m.createdTimestamp - msg.createdTimestamp}ms, while the API Latency is ${Math.round(bot.ping)}ms)`) );
 
   }
   if (command === "help") {
